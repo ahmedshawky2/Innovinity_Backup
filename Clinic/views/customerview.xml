@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="view_partner_form_inherited" model="ir.ui.view" >
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/div[1]/field[@name='phone']" position="attributes">
+            <attribute name="attrs">{"required": [["customer","=",True]]}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='category_id']" position="after">
+          <field name="x_child_name" string="Child/Sub Name"/>
+        </xpath>
+
+        <xpath expr="//field[@name='vat']" position="after">
+          <field name="x_cr"/>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">res.partner</field>
+    <field name="name">res.partner.form customization</field>
+    <field name="priority">99</field>
+    <field name="type">form</field>
+  </record>
+
+
+
+    <record id="invoice_tree_with_onboarding_Inhrited" model="ir.ui.view" >
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='user_id']" position="attributes">
+          <attribute name="string">Doctor</attribute>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="account.invoice_tree_with_onboarding"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">account.invoice</field>
+    <field name="name">account.invoice.tree.with.onboarding customization</field>
+    <field name="priority">99</field>
+    <field name="type">tree</field>
+  </record>
+  <record id="invoice_form_Inhrited" model="ir.ui.view" >
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='user_id']" position="attributes">
+          <attribute name="string">Doctor</attribute>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="account.invoice_form"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">account.invoice</field>
+    <field name="name">Odoo Studio: account.invoice.form customization</field>
+    <field name="priority">99</field>
+    <field name="type">form</field>
+  </record>
+
+
+  <record id="view_partner_tree_inhrited" model="ir.ui.view">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='phone']" position="after">
+          <field name="x_child_name"/>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="base.view_partner_tree"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">res.partner</field>
+    <field name="name">res.partner.tree customization</field>
+    <field name="priority">99</field>
+    <field name="type">tree</field>
+  </record>
+
+
+
+    <record id="view_account_invoice_filter_Inhirted" model="ir.ui.view" >
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='user_id']" position="attributes">
+          <attribute name="string">Doctor</attribute>
+        </xpath>
+        <xpath expr="//filter[@name='salesperson']" position="attributes">
+          <attribute name="string">Doctor</attribute>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">account.invoice</field>
+    <field name="name">account.invoice.select customization</field>
+    <field name="priority">99</field>
+    <field name="type">search</field>
+  </record>
+
+
+
+
+</odoo>
