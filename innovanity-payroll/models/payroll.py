@@ -84,6 +84,16 @@ class taxation(models.Model):
             after_personal_exempt = after_personal_exempt - exempt_month_slary
             _logger.debug('after_personal_exempt maged ! "%s"' % (str(after_personal_exempt)))
 
+            if after_personal_exempt < exempt_month_slary:
+                _logger.debug('after_personal_exempt < exempt_month_slary ==> maged !')
+                tax10 = after_personal_exempt * 0.1
+                _logger.debug(
+                    'after_personal_exempt < exempt_month_slary ==> maged ! "%s"' % (str(tax10)))
+                result = tax10 + tax15 + tax20 + tax22_5
+                _logger.debug(
+                    'after_personal_exempt < exempt_month_slary ==> maged ! "%s"' % (str(result)))
+                return result
+
             ##if (8000/12) < after_personal_exempt <= (22000/12):
             if exempt_month_slary < after_personal_exempt <= (22000/12):
                 tax10 = after_personal_exempt * 0.1
@@ -177,7 +187,7 @@ class taxation(models.Model):
         result = 0.0
 
         for input in inputs:
-            if input[0]['code'] == code and int(input[0]['contract_id']) == contract_id:
+            if input[0]['code'] == code and int(input[0]['contract_id'])  == contract_id:
                 result = result + input[0]['amount']
 
         _logger.debug('result maged ! "%s"' % (str(result)))
