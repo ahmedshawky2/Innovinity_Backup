@@ -1,0 +1,81 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="hr-custom-employee-id.list">
+      <field name="name">hr-custom-employee-id list</field>
+      <field name="model">hr-custom-employee-id.hr-custom-employee-id</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="hr-custom-employee-id.action_window">
+      <field name="name">hr-custom-employee-id window</field>
+      <field name="res_model">hr-custom-employee-id.hr-custom-employee-id</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="hr-custom-employee-id.action_server">
+      <field name="name">hr-custom-employee-id server</field>
+      <field name="model_id" ref="model_hr-custom-employee-id_hr-custom-employee-id"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="hr-custom-employee-id" id="hr-custom-employee-id.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="hr-custom-employee-id.menu_1" parent="hr-custom-employee-id.menu_root"/>
+    <menuitem name="Menu 2" id="hr-custom-employee-id.menu_2" parent="hr-custom-employee-id.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="hr-custom-employee-id.menu_1_list" parent="hr-custom-employee-id.menu_1"
+              action="hr-custom-employee-id.action_window"/>
+    <menuitem name="Server to list" id="hr-custom-employee-id" parent="hr-custom-employee-id.menu_2"
+              action="hr-custom-employee-id.action_server"/>
+    -->
+
+    <record id="odoo_hr_employee_innovinity" model="ir.ui.view" >
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='company_id']" position="after">
+          <field name="id"/>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="hr.view_employee_form"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">hr.employee</field>
+    <field name="name">	hr.employee.form customization</field>
+    <field name="priority">99</field>
+    <field name="type">tree</field>
+  </record>
+
+  </data>
+</odoo>
