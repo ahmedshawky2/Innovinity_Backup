@@ -89,7 +89,7 @@
 
         <record id="hr_rule_net_gross" model="hr.salary.rule">
             <field name="name">Gross EG</field>
-            <field name="sequence" eval="601"/>
+            <field name="sequence" eval="100"/>
             <field name="code">GROSS</field>
             <field name="category_id" ref="innovanity-payroll.GROSS"/>
             <field name="condition_select">none</field>
@@ -99,7 +99,7 @@
 
         <record id="hr_rule_net" model="hr.salary.rule">
             <field name="name">Net Salary EG</field>
-            <field name="sequence" eval="701"/>
+            <field name="sequence" eval="200"/>
             <field name="code">NET</field>
             <field name="category_id" ref="innovanity-payroll.NET"/>
             <field name="condition_select">none</field>
@@ -109,7 +109,7 @@
 
         <record id="hr_rule_nsat" model="hr.salary.rule">
             <field name="name">Net Salary After Taxes EG</field>
-            <field name="sequence" eval="900"/>
+            <field name="sequence" eval="202"/>
             <field name="code">NSAT</field>
             <field name="category_id" ref="innovanity-payroll.NET"/>
             <field name="condition_select">none</field>
@@ -120,7 +120,7 @@
 
         <record id="hr_rule_icsr" model="hr.salary.rule">
             <field name="name">Insurance Company Share EG</field>
-            <field name="sequence" eval="100"/>
+            <field name="sequence" eval="2"/>
             <field name="code">	ICSR</field>
             <field name="category_id" ref="innovanity-payroll.ICS"/>
             <field name="condition_select">none</field>
@@ -131,7 +131,7 @@
 
         <record id="hr_rule_vicsr" model="hr.salary.rule">
             <field name="name">Variant Insurance Company Share EG</field>
-            <field name="sequence" eval="500"/>
+            <field name="sequence" eval="98"/>
             <field name="code">	VICSR</field>
             <field name="category_id" ref="innovanity-payroll.VICS"/>
             <field name="condition_select">none</field>
@@ -142,7 +142,7 @@
 
         <record id="hr_rule_vsir" model="hr.salary.rule">
             <field name="name">Variant Social Insurance EG</field>
-            <field name="sequence" eval="201"/>
+            <field name="sequence" eval="99"/>
             <field name="code">	VSIR</field>
             <field name="category_id" ref="innovanity-payroll.SI"/>
             <field name="condition_select">none</field>
@@ -153,7 +153,7 @@
 
         <record id="hr_rule_sir" model="hr.salary.rule">
             <field name="name">Social Insurance EG</field>
-            <field name="sequence" eval="101"/>
+            <field name="sequence" eval="3"/>
             <field name="code">	SIR</field>
             <field name="category_id" ref="innovanity-payroll.SI"/>
             <field name="condition_select">none</field>
@@ -165,22 +165,22 @@
 
         <record id="hr_rule_o_in_alw" model="hr.salary.rule">
             <field name="name">Other Inputs Allowances EG</field>
-            <field name="sequence" eval="200"/>
+            <field name="sequence" eval="30"/>
             <field name="code">	OALW</field>
             <field name="category_id" ref="innovanity-payroll.ALW"/>
             <field name="condition_select">none</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = payslip.env['hr.payslip'].sum_inputs_codes(payslip.id,"ALW",contract.id)</field>
+            <field name="amount_python_compute">result = inputs.ALW.amount</field>
         </record>
 
         <record id="hr_rule_o_in_ded" model="hr.salary.rule">
             <field name="name">Other Inputs Deductions EG</field>
-            <field name="sequence" eval="201"/>
+            <field name="sequence" eval="31"/>
             <field name="code">	ODED</field>
             <field name="category_id" ref="innovanity-payroll.DED"/>
             <field name="condition_select">none</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = payslip.env['hr.payslip'].sum_inputs_codes(payslip.id,"DED",contract.id)</field>
+            <field name="amount_python_compute">result = inputs.DED.amount</field>
         </record>
 
         <record id="hr_rule_basic" model="hr.salary.rule">
@@ -195,23 +195,12 @@
 
         <record id="hr_rule_tax" model="hr.salary.rule">
             <field name="name">Salary Tax EG</field>
-            <field name="sequence" eval="800"/>
+            <field name="sequence" eval="201"/>
             <field name="code">ST</field>
             <field name="category_id" ref="innovanity-payroll.TAX"/>
             <field name="condition_select">none</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">result = payslip.env['hr.payslip'].get_salary_m_taxes(contract.employee_id, categories.NET)</field>
-            <field name="register_id" ref="contrib_register_taxes"/>
-        </record>
-
-        <record id="hr_rule_outsource_tax" model="hr.salary.rule">
-            <field name="name">Salary Tax Outsource EG</field>
-            <field name="sequence" eval="801"/>
-            <field name="code">STO</field>
-            <field name="category_id" ref="innovanity-payroll.TAX"/>
-            <field name="condition_select">none</field>
-            <field name="amount_select">code</field>
-            <field name="amount_python_compute">	result = (categories.NET) * 0.1</field>
             <field name="register_id" ref="contrib_register_taxes"/>
         </record>
 

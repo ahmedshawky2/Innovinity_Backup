@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="accounting_lineitem_da7e4b32-24b5-4a77-ac06-666153722caf" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="lineitem_56da23cb-6801-412b-ae0f-c2e2ddf49f57"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">LineItem</field>
+    <field name="parent_id" ref="account_accountant.menu_accounting"/>
+    <field name="sequence">10</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+</odoo>

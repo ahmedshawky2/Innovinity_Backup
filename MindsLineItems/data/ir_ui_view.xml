@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="odoo_studio_account__91707460-be6f-4c5c-baa0-f84530e22904" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//tree[1]" position="attributes">
+          <attribute name="create">false</attribute>
+          <attribute name="delete">false</attribute>
+          <attribute name="edit">false</attribute>
+        </xpath>
+        <xpath expr="//tree[1]/field[@name='name']" position="after">
+          <field name="product_id"/>
+          <field name="account_analytic_id"/>
+          <field name="invoice_type"/>
+          <field name="create_date"/>
+        </xpath>
+        <xpath expr="//field[@name='price_subtotal']" position="after">
+          <field name="price_subtotal_signed"/>
+          <field name="invoice_id"/>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="account.view_invoice_line_tree"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">account.invoice.line</field>
+    <field name="name">Odoo Studio: account.invoice.line.tree customization</field>
+    <field name="priority">99</field>
+    <field name="type">tree</field>
+  </record>
+  <record id="default_search_view__34ba4b9b-b391-4402-bcaa-ec99625ac761" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <search string="Invoice Line">
+        <field name="name" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+      </search>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" eval="False"/>
+    <field name="key" eval="False"/>
+    <field name="mode">primary</field>
+    <field name="model">account.invoice.line</field>
+    <field name="name">Default search view for account.invoice.line</field>
+    <field name="priority">16</field>
+    <field name="type">search</field>
+  </record>
+  <record id="odoo_studio_default__2b322df9-1a02-469b-a6bc-c20c892b3667" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//search[1]/field[@name='name']" position="replace">
+          <field name="product_id"/>
+          <field name="account_analytic_id"/>
+          <filter domain="[[&quot;invoice_type&quot;,&quot;=&quot;,&quot;out_invoice&quot;]]" name="studio_filter_BZcaC" string="Invoices"/>
+          <filter domain="[[&quot;invoice_type&quot;,&quot;=&quot;,&quot;in_invoice&quot;]]" name="studio_filter_U9hDF" string="Bills"/>
+          <group name="studio_group_by">
+            <filter context="{'group_by': 'product_id'}" name="product_id" string="Product"/>
+            <filter context="{'group_by': 'account_analytic_id'}" name="account_analytic_id" string="Analytic Account"/>
+            <filter context="{'group_by': 'invoice_id'}" name="invoice_id" string="Invoice Reference"/>
+          </group>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="default_search_view__34ba4b9b-b391-4402-bcaa-ec99625ac761"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">account.invoice.line</field>
+    <field name="name">Odoo Studio: Default search view for account.invoice.line customization</field>
+    <field name="priority">99</field>
+    <field name="type">search</field>
+  </record>
+</odoo>

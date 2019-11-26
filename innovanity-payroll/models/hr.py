@@ -99,10 +99,10 @@ class hrEmployeeSalaryFixedRules(models.Model):
     status_rule_flag = fields.Boolean(string="Rule Status", help="Rule Status",track_visibility='always'
                                  ,index=True,store=True, required=True)
 
-    rule = fields.Many2one('hr.salary.rule', string='Rule', index=True, track_visibility='always',required=True,store=True,ondelete='cascade')
+    rule = fields.Many2one('hr.salary.rule', string='Rule', index=True, track_visibility='always',required=True,store=True)
 
     salary_structure = fields.Many2one('hr.payroll.structure', string='Employee Salary Structure', index=True,
-                                   track_visibility='always',store=True,help='Employee Salary Structure',ondelete='cascade')
+                                   track_visibility='always',store=True,help='Employee Salary Structure')
 
     @api.model
     def create(self, values):
