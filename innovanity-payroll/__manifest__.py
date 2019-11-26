@@ -29,10 +29,10 @@
         'views/templates.xml',
         'views/hr_employee_view.xml',
         'views/hr_contract_view.xml',
-        'demo/data.xml',
+      #  'demo/data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
+       # 'demo/demo.xml',
     ],
 }
