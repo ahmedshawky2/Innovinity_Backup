@@ -2,7 +2,7 @@
     'name': 'Clinic',
     'description': 'Clinic',
     'author': 'Minds',
-    'depends': ['base','account_accountant','account.asset.asset'],
+    'depends': ['base','account_accountant','account'],
     'application': True,
     'data': [
 
